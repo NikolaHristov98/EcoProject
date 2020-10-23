@@ -5,7 +5,7 @@ let trash_count = 0;
 latest_added = 0;
 
 let player = {
-  pos : {x:0, y:0, w:0.5, h:0.5},
+  pos : {x:100, y:100, w:0.5, h:0.5},
   lives : 3,
   score : 0,
   image : null
