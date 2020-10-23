@@ -46,8 +46,8 @@ function keyEvents(){
       //report the mouse position on click
       canvas.addEventListener("mousemove", function (evt) {
           let p  = getCanvasRelativeMousePosition(evt, canvas)
-          pos[0] = p.x/320 -1;
-          pos[1] = -p.y/320 +1;
+          player.pos.x = p.x/320 -1;
+          player.pos.y = -p.y/320 +1;
       }, false);
     
     window.onclick = function(event){
