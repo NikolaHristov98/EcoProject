@@ -84,22 +84,18 @@ function main() {
     return textureInfo;
   }
 
-  
-let player = {
-  pos : {x:0, y:0, w:50, h:50},
-  lives : 3,
-  score : 0,
-  image : loadImageAndCreateTextureInfo('bin.jpg')
-};
 
   var textureInfos = [
     loadImageAndCreateTextureInfo('bin.jpg'),
     loadImageAndCreateTextureInfo('litter.jpg')
     ];
 
+  player.image = loadImageAndCreateTextureInfo('bin.jpg');
+
   var drawInfos = [];
-  var numToDraw = 2;
+  var numToDraw = 1;
   var speed = 60;
+
   for (var ii = 0; ii < numToDraw; ++ii) {
     var drawInfo = {
       x: 1,
@@ -139,6 +135,8 @@ let player = {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
     gl.clear(gl.COLOR_BUFFER_BIT);
+
+    drawImage(player.image, player.pos.w, player.pos.h, player.pos.x, player.pos.y, player.image.width  * drawInfo.xScale, player.image.height * drawInfo.yScale)
 
     drawInfos.forEach(function(drawInfo) {
       var dstX      = drawInfo.x;
