@@ -47,7 +47,7 @@ function keyEvents(){
       canvas.addEventListener("mousemove", function (evt) {
           let p  = getCanvasRelativeMousePosition(evt, canvas)
           player.pos.x = p.x;
-          player.pos.y = -p.y;
+          player.pos.y = p.y;
           console.log(player);
       }, false);
     
