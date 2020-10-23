@@ -84,47 +84,44 @@ function main() {
     return textureInfo;
   }
 
-
+ let item = generateItem();
   var textureInfos = [
     loadImageAndCreateTextureInfo('litter.jpg')
     ];
 
-  player.image = loadImageAndCreateTextureInfo('bin.jpg');
+  player.image.push(loadImageAndCreateTextureInfo('bin.jpg'));
+  player.currImage = 0;
 
   var drawInfos = [];
-  var numToDraw = 1;
-  var speed = 60;
-
-  for (var ii = 0; ii < numToDraw; ++ii) {
-    var drawInfo = {
-      x: 1,
-      y: 1,
-      dx: 0,
-      dy: 0,
-      xScale:  0.1 ,
-      yScale:  0.1 ,
-      textureInfo: textureInfos[Math.random() * textureInfos.length | 0],
-    };
-    drawInfos.push(drawInfo);
-  }
+  var speed = 100;
 
   function update(deltaTime) {
+
+    if(Date.now() - latest_added >= spawnSpeed){
+      let res = generateItem();
+
+      drawInfos.push({
+        textureInfo : loadImageAndCreateTextureInfo(type_trash[res.type].imgs[res.img]),
+        x : res.pos.x,
+        y : res.pos.y,
+        h : res.pos.h,
+        w : res.pos.w
+      })
+
+    }
+
+    let didMiss = false;
     drawInfos.forEach(function(drawInfo) {
-      drawInfo.x += drawInfo.dx * speed * deltaTime;
-      drawInfo.y += drawInfo.dy * speed * deltaTime;
-      if (drawInfo.x < 0) {
-        drawInfo.dx = 1;
-      }
-      if (drawInfo.x >= gl.canvas.width) {
-        drawInfo.dx = -1;
-      }
-      if (drawInfo.y < 0) {
-        drawInfo.dy = 1;
-      }
-      if (drawInfo.y >= gl.canvas.height) {
-        drawInfo.dy = -1;
+      drawInfo.y +=  speed * deltaTime;
+      if (drawInfo.y + drawInfo.h >= gl.canvas.height) {
+        player.lives--;
+        didMiss = true;
       }
     });
+
+    if(didMiss){
+      drawInfos.shift();
+    }
   }
 
   function draw() {
@@ -135,19 +132,14 @@ function main() {
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    drawImage(player.image.texture, player.image.width, player.image.height, player.pos.x, player.pos.y, 100, 100)
+    drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - 25, player.pos.y-25, 50, 50)
 
     drawInfos.forEach(function(drawInfo) {
-      var dstX      = drawInfo.x;
-      var dstY      = drawInfo.y;
-      var dstWidth  = drawInfo.textureInfo.width  * drawInfo.xScale;
-      var dstHeight = drawInfo.textureInfo.height * drawInfo.yScale;
-
       drawImage(
         drawInfo.textureInfo.texture,
         drawInfo.textureInfo.width,
         drawInfo.textureInfo.height,
-        dstX, dstY, dstWidth, dstHeight);
+        drawInfo.x, drawInfo.y, drawInfo.w, drawInfo.h);
     });
   }
 
@@ -157,8 +149,10 @@ function main() {
     var deltaTime = Math.min(0.1, now - then);
     then = now;
 
-    update(deltaTime);
-    draw();
+    if(!pause){
+      update(deltaTime);
+      draw();
+    }
 
     requestAnimationFrame(render);
   }

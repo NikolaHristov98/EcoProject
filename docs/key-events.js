@@ -1,3 +1,5 @@
+let pause = true;
+
 function getStyleSize(style, propName) {
     return parseInt(style.getPropertyValue(propName));
   }
@@ -42,13 +44,23 @@ function keyEvents(){
     let canvas;
 
     canvas = document.getElementById("canvas");
+
+    window.addEventListener("change", function(evt){
+      currCanvasW = canvas.getBoundingClientRect().width;
+      currCanvasH = canvas.getBoundingClientRect().height;
+    })
+
+    window.onload = function(event){
+      currCanvasW = canvas.getBoundingClientRect().width;
+      currCanvasH = canvas.getBoundingClientRect().height;
+    }
     
       //report the mouse position on click
       canvas.addEventListener("mousemove", function (evt) {
           let p  = getCanvasRelativeMousePosition(evt, canvas)
           player.pos.x = p.x;
           player.pos.y = p.y;
-          console.log(player);
+          //console.log(player);
       }, false);
     
     window.onclick = function(event){
@@ -59,10 +71,15 @@ function keyEvents(){
       rgb[2] = temp
     }
     
-    
+    canvas.addEventListener("mouseenter", function(evt){
+      pause = false;
+    })
+    canvas.addEventListener("mouseleave", function(evt){
+      pause = true;
+    })
     
     window.onkeypress = function(event){
-        this.console.log(event)
+        //this.console.log(event)
     
         switch(event.key){
             case 'a' :{

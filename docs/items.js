@@ -1,57 +1,35 @@
 let pos = [0.0, 0.0];
-let rgb = [1.0, .5 ,0.25];
+let rgb = [1.0, .5, 0.25];
 let speed = 0.5, time_spawn = 10;
 let trash_count = 0;
-latest_added = 0;
+let latest_added = 0;
+let spawnSpeed = 2000;
+
+let currCanvasW, currCanvasH;
+
+let type_trash = [
+  { type: "plastic", imgs: ["litter.jpg", "litter.jpg", "litter.jpg"] },
+  { type: "paper", imgs: ["litter.jpg", "litter.jpg", "litter.jpg"] },
+  { type: "metal", imgs: ["litter.jpg", "litter.jpg", "litter.jpg"] }
+]
 
 let player = {
-  pos : {x:100, y:100, w:0.5, h:0.5},
-  lives : 3,
-  score : 0,
-  image : null
+  pos: { x: 100, y: 100 },
+  lives: 3,
+  score: 0,
+  image: [],
+  currImage: -1
 };
 
-function updateItems(player, arrItem, deltaTime){
-    if(arrItem.length !== undefined && arrItem.length != 0){
-      if(Date.now() - arrItem[arrItem.length -1].time >= time_spawn){
-        generateItem(arrItem);
-        trash_count++;
-        if(trash_count % 2 == 0){
-            speed += 0.01;
-            //if(time_spawn >100)
-            time_spawn -= 10;
+let arrTrash = []
 
-            console.log({speed_: speed, time_spawn_: time_spawn});
-        }
-      }
 
-      if(arrItem[0].pos[2].y <= -1){
-          arrItem.shift();
-      }
+function generateItem() {
+  _type = Math.floor(Math.random() * 3);
+  _img = Math.floor(Math.random() * 3);
+  _new_pos = Math.floor(Math.random() * (currCanvasW + 1));
+  latest_added = Date.now();
 
-      arrItem.forEach(element => {
-        element.pos.forEach( point =>{
-            point.y -= speed*deltaTime;
-            
-        });
-      });
-    }else{
-        generateItem(arrItem);
-        trash_count++;
-    }
-    
-  
-    return arrItem;
-  }
-  
-  function generateItem(arrItem){
-     new_pos = 2*Math.random() - 1;
-     latest_added = Date.now();
-      arrItem.push({pos : {x :new_pos-0.05, y:1.05, w: 0.1, h: 0.1}})
-    
-  }
+  return ({ pos: { x: _new_pos, y: 0, w: 25, h: 25 }, type: _type, img: _img  });
+}
 
-  function generateRandom(){
-    return {}
-
-  }
