@@ -86,7 +86,6 @@ function main() {
 
 
   var textureInfos = [
-    loadImageAndCreateTextureInfo('bin.jpg'),
     loadImageAndCreateTextureInfo('litter.jpg')
     ];
 
@@ -136,7 +135,7 @@ function main() {
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    drawImage(player.image, player.pos.w, player.pos.h, player.pos.x, player.pos.y, player.image.width  * drawInfo.xScale, player.image.height * drawInfo.yScale)
+    drawImage(player.image, player.image.width, player.image.height, player.pos.x, player.pos.y, player.image.width  * drawInfo.xScale, player.image.height * drawInfo.yScale)
 
     drawInfos.forEach(function(drawInfo) {
       var dstX      = drawInfo.x;
