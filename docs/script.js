@@ -1,5 +1,12 @@
 "use strict";
 
+let player = {
+  pos : {x:0, y:0, w:50, h:50},
+  lives = 3,
+  score = 0,
+  image = loadImageAndCreateTextureInfo('bin.jpg')
+};
+
 function main() {
   // Get A WebGL context
   /** @type {HTMLCanvasElement} */
