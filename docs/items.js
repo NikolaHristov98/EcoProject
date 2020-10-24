@@ -50,11 +50,11 @@ function ItemIsInTrash(arrTrash) {
       if (arrTrash[i].id == player.currImage) {
         
         mult + 0.01;
-        player.score += mult * 10;
+        player.score += Math.floor(mult * 10);
       }
       else {
         
-        player.score = player.score - 50;
+        player.lives--;
       }
       arrTrash.splice(i, 1);
     }
