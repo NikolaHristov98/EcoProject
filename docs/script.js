@@ -181,11 +181,18 @@ for(let i = 0; i<10; i++){
     let copy = player.score;
     let topX = 0;
     let topY = currCanvasH - scoreH;
+    let str = "";
 
     for(let i = 0; i <10; i++){
-      drawImage(nums[Math.abs(copy%10)].texture, nums[Math.abs(copy%10)].width,nums[Math.abs(copy%10)].height, topX, topY);
-      topX += 50;
+      str = Math.abs(copy%10) + str;
+      //drawImage(nums[Math.abs(copy%10)].texture, nums[Math.abs(copy%10)].width,nums[Math.abs(copy%10)].height, topX, topY);
+     
       copy = Math.floor(copy/10);
+    }
+
+    for(let i = 0; i< 10; i++){
+      drawImage(nums[parseInt(str[i],10)].texture, nums[parseInt(str[i],10)].width,nums[parseInt(str[i],10)].height, topX, topY)
+      topX += 50;
     }
   }
 
