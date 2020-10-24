@@ -142,13 +142,13 @@ for(let i = 0; i<10; i++){
     
     ItemIsInTrash(drawInfos);
 
-    currScrollPos+=deltaTime*speed;
+    currScrollPos+=deltaTime*speed*10;
     
 
 
     let didMiss = false;
     drawInfos.forEach(function(drawInfo) {
-      drawInfo.y +=  speed * deltaTime;
+      drawInfo.y +=  100*speed * deltaTime;
       if (drawInfo.y + drawInfo.h >= gl.canvas.height) {
         player.lives--;
         didMiss = true;
