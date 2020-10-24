@@ -10,10 +10,11 @@ let mult = 1;
 let currCanvasW, currCanvasH;
 let currPlayerW, currPlayerH, currTrashW, currTrashH;
 
+
 let type_trash = [
-  { type: "plastic", imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
-  { type: "paper", imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
-  { type: "metal", imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] }
+  { type: "plastic", id : 0, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
+  { type: "paper", id : 1 ,imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
+  { type: "metal", id : 2 ,imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] }
 ]
 
 let player = {

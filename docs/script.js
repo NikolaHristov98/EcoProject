@@ -127,6 +127,8 @@ function main() {
     }
   }
 
+  let background = loadImageAndCreateTextureInfo('assets/background-colours.jpg');
+
   function draw() {
     webglUtils.resizeCanvasToDisplaySize(gl.canvas);
 
@@ -134,6 +136,8 @@ function main() {
     gl.viewport(0, 0, gl.canvas.width, gl.canvas.height);
 
     gl.clear(gl.COLOR_BUFFER_BIT);
+
+    drawImage(background.texture, background.width, background.height, 0, 0);
 
     drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - currPlayerW/2, player.pos.y-currPlayerH/2, currPlayerW, currPlayerH)
 

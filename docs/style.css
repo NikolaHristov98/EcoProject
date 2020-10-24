@@ -2,8 +2,6 @@ body {
   margin: 0;
 }
 
-
-
 @media only screen and (min-width: 769px) {
   canvas {
     margin: auto;
