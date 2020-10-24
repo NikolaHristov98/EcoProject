@@ -99,7 +99,7 @@ function main() {
 
   let background = loadImageAndCreateTextureInfo('assets/background-colours.jpg');
 
-  currScrollPos = background.height + canvas.height;
+  currScrollPos = -2000;
 
   function update(deltaTime) {
 
@@ -116,11 +116,8 @@ function main() {
 
     }
 
-    if(currScrollPos >0){
-      currScrollPos-=deltaTime*speed*1000;
-    }else{
-      currScrollPos = 0;
-    }
+    
+      currScrollPos+=deltaTime*speed*10;
     
 
     let didMiss = false;
