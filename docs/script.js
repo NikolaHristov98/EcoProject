@@ -117,7 +117,7 @@ function main() {
     }
 
     if(currScrollPos >0){
-      currScrollPos-=deltaTime*speed;
+      currScrollPos-=deltaTime*speed*1000;
     }else{
       currScrollPos = 0;
     }
