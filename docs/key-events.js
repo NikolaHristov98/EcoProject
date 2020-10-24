@@ -48,14 +48,17 @@ function keyEvents(){
     //canvas.addEventListener('touchcancel', process_touchcancel, false);
 
     canvas.addEventListener('touchstart', function(evt){
+      event.preventDefault()
       pause = false;
     }, false);
 
     canvas.addEventListener('touchend', function(evt){
+      event.preventDefault()
       pause = true;
     }, false);
 
     canvas.addEventListener('touchmove', function(evt){
+      event.preventDefault()
       let p  = getCanvasRelativeMousePosition(evt, canvas)
       player.pos.x = p.x;
       player.pos.y = p.y;
