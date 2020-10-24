@@ -49,8 +49,8 @@ function keyEvents() {
     if(player.currImage<0){
       player.currImage = 2;
     }
-    //return false;     // cancel default menu
-    return true;
+    return false;     // cancel default menu
+    //return true;
   }
 
   canvas = document.getElementById("canvas");
@@ -64,21 +64,21 @@ function keyEvents() {
   }, false)
 
   canvas.addEventListener('touchcancel', function () {
-    evt.preventDefault()
+   // evt.preventDefault()
   }, false);
 
   canvas.addEventListener('touchstart', function (evt) {
-    evt.preventDefault()
+    //evt.preventDefault()
     pause = false;
   }, false);
 
   canvas.addEventListener('touchend', function (evt) {
-    evt.preventDefault()
+    //evt.preventDefault()
     pause = true;
   }, false);
 
   canvas.addEventListener('touchmove', function (evt) {
-    evt.preventDefault()
+   // evt.preventDefault()
     let p = getCanvasRelativeMousePosition(evt, canvas)
     player.pos.x = p.x;
     player.pos.y = p.y;
