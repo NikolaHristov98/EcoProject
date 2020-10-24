@@ -200,7 +200,7 @@ for(let i = 0; i<10; i++){
 
     for(let i = 0; i< 5; i++){
       drawImage(nums[parseInt(str[i],10)].texture, scoreW ,scoreH, topX, topY)
-      topX += 50;
+      topX += scoreW;
     }
   }
 
