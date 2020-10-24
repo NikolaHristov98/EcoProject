@@ -13,15 +13,15 @@ function main() {
   currCanvasH = canvas.getBoundingClientRect().height;
 
   if (currCanvasW <= 769) {
-    scoreH = 0.09 * currCanvasW;
+    scoreW = scoreH = 0.09 * currCanvasW;
     currPlayerH = currPlayerW = 0.09 * currCanvasW;
     currTrashH = currTrashW = 0.07 * currCanvasW;
   } else if (currCanvasW <= 1200) {
-    scoreH = 0.07 * currCanvasW;
+    scoreW = scoreH = 0.07 * currCanvasW;
     currPlayerH = currPlayerW = 0.07 * currCanvasW;
     currTrashH = currTrashW = 0.055 * currCanvasW;
   } else {
-    scoreH = 0.09 * currCanvasW;
+    scoreW = scoreH = 0.09 * currCanvasW;
     currPlayerH = currPlayerW = 0.09 * currCanvasW;
     currTrashH = currTrashW = 0.08 * currCanvasW;
   }
@@ -199,7 +199,7 @@ for(let i = 0; i<10; i++){
     }
 
     for(let i = 0; i< 5; i++){
-      drawImage(nums[parseInt(str[i],10)].texture, nums[parseInt(str[i],10)].width,scoreH, topX, topY)
+      drawImage(nums[parseInt(str[i],10)].texture, nums[parseInt(str[i],10)].width ,scoreH, topX, topY)
       topX += 50;
     }
   }

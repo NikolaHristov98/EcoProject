@@ -8,7 +8,7 @@ let spawnSpeed = 2000;
 let mult = 1;
 
 let currCanvasW, currCanvasH;
-let currPlayerW, currPlayerH, currTrashW, currTrashH, scoreH;
+let currPlayerW, currPlayerH, currTrashW, currTrashH, scoreH,scoreW;
 
 let currScrollPos = 0;
 
