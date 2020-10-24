@@ -8,9 +8,9 @@ let spawnSpeed = 2000;
 let currCanvasW, currCanvasH;
 
 let type_trash = [
-  { type: "plastic", imgs: ["litter.jpg", "litter.jpg", "litter.jpg"] },
-  { type: "paper", imgs: ["litter.jpg", "litter.jpg", "litter.jpg"] },
-  { type: "metal", imgs: ["litter.jpg", "litter.jpg", "litter.jpg"] }
+  { type: "plastic", imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
+  { type: "paper", imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
+  { type: "metal", imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] }
 ]
 
 let player = {
