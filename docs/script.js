@@ -87,13 +87,12 @@ function main() {
     return textureInfo;
   }
 
- let item = generateItem();
-  var textureInfos = [
-    loadImageAndCreateTextureInfo('litter.jpg')
-    ];
+///'assets/blue_container.svg','assets/green_container.svg','assets/yellow_container.svg'
 
-  player.image.push(loadImageAndCreateTextureInfo('bin.jpg'));
-  player.currImage = 0;
+  player.image.push(loadImageAndCreateTextureInfo('assets/blue_container.svg'));
+  player.image.push(loadImageAndCreateTextureInfo('assets/green_container.svg'));
+  player.image.push(loadImageAndCreateTextureInfo('assets/yellow_container.svg'));
+  player.currImage = 2;
 
   var drawInfos = [];
   var speed = 100;
