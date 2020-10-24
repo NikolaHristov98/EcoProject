@@ -45,20 +45,22 @@ function keyEvents(){
 
     canvas = document.getElementById("canvas");
 
-    //canvas.addEventListener('touchcancel', process_touchcancel, false);
+    canvas.addEventListener('touchcancel', function(){
+      evt.preventDefault()
+    }, false);
 
     canvas.addEventListener('touchstart', function(evt){
-      event.preventDefault()
+      evt.preventDefault()
       pause = false;
     }, false);
 
     canvas.addEventListener('touchend', function(evt){
-      event.preventDefault()
+      evt.preventDefault()
       pause = true;
     }, false);
 
     canvas.addEventListener('touchmove', function(evt){
-      event.preventDefault()
+      evt.preventDefault()
       let p  = getCanvasRelativeMousePosition(evt, canvas)
       player.pos.x = p.x;
       player.pos.y = p.y;
