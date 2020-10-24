@@ -8,7 +8,7 @@ let spawnSpeed = 2000;
 let mult = 1;
 
 let currCanvasW, currCanvasH;
-let currPlayerW, currPlayerH, currTrashW, currTrashH, scoreH = 200;
+let currPlayerW, currPlayerH, currTrashW, currTrashH, scoreH;
 
 let currScrollPos = 0;
 
@@ -50,7 +50,7 @@ function ItemIsInTrash(arrTrash) {
       if (arrTrash[i].id == player.currImage) {
         
         mult + 0.01;
-        player.score += Math.floor(mult * 10);
+        player.score += Math.ceil(mult * 10);
       }
       else {
         
