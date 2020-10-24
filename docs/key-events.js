@@ -45,6 +45,22 @@ function keyEvents(){
 
     canvas = document.getElementById("canvas");
 
+    //canvas.addEventListener('touchcancel', process_touchcancel, false);
+
+    canvas.addEventListener('touchstart', function(evt){
+      pause = false;
+    }, false);
+
+    canvas.addEventListener('touchend', function(evt){
+      pause = true;
+    }, false);
+
+    canvas.addEventListener('touchmove', function(){
+      let p  = getCanvasRelativeMousePosition(evt, canvas)
+      player.pos.x = p.x;
+      player.pos.y = p.y;
+    }, false);
+    
     window.addEventListener("change", function(evt){
       currCanvasW = canvas.getBoundingClientRect().width;
       currCanvasH = canvas.getBoundingClientRect().height;
