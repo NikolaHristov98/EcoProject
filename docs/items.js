@@ -33,6 +33,8 @@ function generateItem() {
   _img = Math.floor(Math.random() * 3);
   _new_pos = Math.floor(Math.random() * (currCanvasW + 1));
   latest_added = Date.now();
+  spawnSpeed += 50;
+  speed += 0.01;
 
   return ({ pos: { x: _new_pos, y: 0, w: 25, h: 25 }, type: _type, img: _img});
 }
@@ -57,10 +59,6 @@ function ItemIsInTrash(arrTrash) {
         player.lives--;
       }
       arrTrash.splice(i, 1);
-    }
-    else (Math.abs(isItemInTrash >= Number.EPSILON))
-    {
-      continue;
     }
   }
 }

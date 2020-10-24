@@ -118,7 +118,6 @@ for(let i = 0; i<10; i++){
   player.currImage = 2;
 
   var drawInfos = [];
-  var speed = 100;
 
   let background = loadImageAndCreateTextureInfo('assets/background-colours.jpg');
   let heart = loadImageAndCreateTextureInfo('assets/heart.png')
@@ -176,7 +175,7 @@ for(let i = 0; i<10; i++){
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-   // drawImage(background.texture, background.width, background.height, 0, currScrollPos);
+    drawImage(background.texture, background.width, background.height, 0, currScrollPos);
 
     drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - currPlayerW/2, player.pos.y-currPlayerH/2, currPlayerW, currPlayerH)
 
@@ -195,8 +194,6 @@ for(let i = 0; i<10; i++){
 
     for(let i = 0; i <5; i++){
       str = Math.abs(copy%10) + str;
-      //drawImage(nums[Math.abs(copy%10)].texture, nums[Math.abs(copy%10)].width,nums[Math.abs(copy%10)].height, topX, topY);
-     
       copy = Math.floor(copy/10);
     }
 
