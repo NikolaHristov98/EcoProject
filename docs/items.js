@@ -14,9 +14,9 @@ let currScrollPos = 0;
 
 
 let type_trash = [
-  { type: "plastic", id : 0, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
-  { type: "paper", id : 1 ,imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
-  { type: "metal", id : 2 ,imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] }
+  { type: "plastic", id: 0, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
+  { type: "paper", id: 1, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
+  { type: "metal", id: 2, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] }
 ]
 
 let player = {
@@ -27,7 +27,8 @@ let player = {
   currImage: -1
 };
 
-let arrTrash = []
+
+
 
 
 function generateItem() {
@@ -36,6 +37,31 @@ function generateItem() {
   _new_pos = Math.floor(Math.random() * (currCanvasW + 1));
   latest_added = Date.now();
 
-  return ({ pos: { x: _new_pos, y: 0, w: 25, h: 25 }, type: _type, img: _img  });
+  return ({ pos: { x: _new_pos, y: 0, w: 25, h: 25 }, type: _type, img: _img});
 }
 
+function ItemIsInTrash(arrTrash) {
+  var centerPlayerX = player.pos.x + currPlayerW / 2;
+  var centerPlayerY = player.pos.y + currPlayerH / 2;
+
+  for (var i = 0; i < arrTrash.length; i++) {
+    var centerItemX = arrTrash[i].x + currTrashW / 2;
+    var centerItemY = arrTrash[i].y + currTrashH / 2;
+    var isItemInTrash = Math.sqrt(Math.pow(centerPlayerX - centerItemX, 2) + Math.pow(centerPlayerY - centerItemY, 2))
+
+    if (Math.abs(isItemInTrash) < 100) {
+      if (arrTrash[i].id == player.currImage) {
+        arrTrash.splice(i, 1);
+        mult + 0.01;
+        player.score += mult * 10;
+      }
+      else {
+        player.score = player.score - 50;
+      }
+    }
+    else (Math.abs(isItemInTrash >= Number.EPSILON))
+    {
+      continue;
+    }
+  }
+}

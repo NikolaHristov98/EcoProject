@@ -111,13 +111,15 @@ function main() {
         x : res.pos.x,
         y : res.pos.y,
         h : res.pos.h,
-        w : res.pos.w
+        w : res.pos.w,
+        id: res.type
       })
-
     }
 
     
-      currScrollPos+=deltaTime*speed;
+    ItemIsInTrash(drawInfos);
+
+    currScrollPos+=deltaTime*speed;
     
 
     let didMiss = false;
