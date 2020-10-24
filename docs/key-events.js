@@ -66,10 +66,10 @@ function keyEvents(){
       player.pos.y = p.y;
     }, false);
     
-    window.addEventListener("change", function(evt){
+    window.addEventListener("onresize", function(evt){
       currCanvasW = canvas.getBoundingClientRect().width;
       currCanvasH = canvas.getBoundingClientRect().height;
-      
+
       if(currCanvasW <= 769){
         currPlayerH = currPlayerW = 0.09*currCanvasW;
         currTrashH = currTrashW = 0.07*currCanvasW;
