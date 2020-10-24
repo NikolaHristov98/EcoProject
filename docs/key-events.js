@@ -9,8 +9,8 @@ function getRelativeMousePosition(event, target) {
     var rect = target.getBoundingClientRect();
   
     return {
-      x: event.clientX - rect.left,
-      y: event.clientY - rect.top,
+      x: (event.clientX === undefined ? event.touches[0].pageX : event.clientX) - rect.left,
+      y: (event.clientY === undefined ?event.touches[0].pageY : event.clientY) - rect.top,
     }
   }
 
@@ -55,7 +55,7 @@ function keyEvents(){
       pause = true;
     }, false);
 
-    canvas.addEventListener('touchmove', function(){
+    canvas.addEventListener('touchmove', function(evt){
       let p  = getCanvasRelativeMousePosition(evt, canvas)
       player.pos.x = p.x;
       player.pos.y = p.y;
