@@ -120,6 +120,7 @@ for(let i = 0; i<10; i++){
   var speed = 100;
 
   let background = loadImageAndCreateTextureInfo('assets/background-colours.jpg');
+  let heart = loadImageAndCreateTextureInfo('assets/heart.png')
 
   currScrollPos = -6000 + currCanvasH;
 
@@ -188,7 +189,7 @@ for(let i = 0; i<10; i++){
 
     let copy = player.score;
     let topX = 0;
-    let topY = currCanvasH - scoreH- 100;
+    let topY = currCanvasH - scoreH - 10;
     let str = "";
 
     for(let i = 0; i <5; i++){
@@ -202,10 +203,20 @@ for(let i = 0; i<10; i++){
       drawImage(nums[parseInt(str[i],10)].texture, scoreW ,scoreH, topX, topY)
       topX += scoreW;
     }
+
+    topX = currCanvasW - currPlayerW;
+    topY = currCanvasH - currPlayerW -10;
+
+    for(let i = 0; i < player.lives; i++){
+      drawImage(heart.texture, currPlayerW, currPlayerH, topX, topY);
+      topX-=currTrashW;
+    }
   }
 
   var then = 0;
   function render(time) {
+    let id = requestAnimationFrame(render);
+
     var now = time * 0.001;
     var deltaTime = Math.min(0.1, now - then);
     then = now;
@@ -214,8 +225,12 @@ for(let i = 0; i<10; i++){
       update(deltaTime);
       draw();
     }
+    
+    if(!player.lives){
+      cancelAnimationFrame( id );
+    }
 
-    requestAnimationFrame(render);
+    
   }
   requestAnimationFrame(render);
 
