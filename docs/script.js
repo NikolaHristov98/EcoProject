@@ -185,6 +185,7 @@ for(let i = 0; i<10; i++){
     for(let i = 0; i <10; i++){
       drawImage(nums[Math.abs(copy%10)].texture, nums[copy%10].width,nums[copy%10].height, topX, topY);
       topX += 50;
+      copy = Math.floor(copy/10);
     }
   }
 
