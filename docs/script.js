@@ -119,6 +119,7 @@ function main() {
       if (drawInfo.y + drawInfo.h >= gl.canvas.height) {
         player.lives--;
         didMiss = true;
+        mult = 1;
       }
     });
 

@@ -5,7 +5,7 @@ let trash_count = 0;
 let latest_added = 0;
 let spawnSpeed = 2000;
 
-
+let mult = 1;
 
 let currCanvasW, currCanvasH;
 let currPlayerW, currPlayerH, currTrashW, currTrashH;
