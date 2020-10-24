@@ -13,7 +13,7 @@ function main() {
   currCanvasH = canvas.getBoundingClientRect().height;
 
   if (currCanvasW <= 769) {
-       
+
     scoreW = scoreH = 0.1 * currCanvasW;
     currPlayerH = currPlayerW = 0.1 * currCanvasW;
     currTrashH = currTrashW = 0.09 * currCanvasW;
@@ -79,7 +79,7 @@ function main() {
     gl.bindTexture(gl.TEXTURE_2D, tex);
     // Fill the texture with a 1x1 blue pixel.
     gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE,
-                  new Uint8Array([0, 0, 255, 255]));
+      new Uint8Array([0, 0, 255, 255]));
 
     // let's assume all images are not a power of 2
     gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
@@ -92,7 +92,7 @@ function main() {
       texture: tex,
     };
     var img = new Image();
-    img.addEventListener('load', function() {
+    img.addEventListener('load', function () {
       textureInfo.width = img.width;
       textureInfo.height = img.height;
 
@@ -104,13 +104,13 @@ function main() {
     return textureInfo;
   }
 
-///'assets/blue_container.svg','assets/green_container.svg','assets/yellow_container.svg'
+  ///'assets/blue_container.svg','assets/green_container.svg','assets/yellow_container.svg'
 
-let nums = [];
+  let nums = [];
 
-for(let i = 0; i<10; i++){
-  nums.push(loadImageAndCreateTextureInfo("assets/nums/" + i + ".svg"));
-}
+  for (let i = 0; i < 10; i++) {
+    nums.push(loadImageAndCreateTextureInfo("assets/nums/" + i + ".svg"));
+  }
 
   player.image.push(loadImageAndCreateTextureInfo('assets/blue_container.svg'));
   player.image.push(loadImageAndCreateTextureInfo('assets/green_container.svg'));
@@ -119,36 +119,36 @@ for(let i = 0; i<10; i++){
 
   var drawInfos = [];
 
-  let background = loadImageAndCreateTextureInfo('assets/background-colours.jpg');
+  let background = loadImageAndCreateTextureInfo('assets/2levelgame.png');
   let heart = loadImageAndCreateTextureInfo('assets/heart.png')
 
-  currScrollPos = -6000 + currCanvasH;
+  currScrollPos = -2400 + currCanvasH;
 
   function update(deltaTime) {
 
-    if(Date.now() - latest_added >= spawnSpeed){
+    if (Date.now() - latest_added >= spawnSpeed) {
       let res = generateItem();
 
       drawInfos.push({
-        textureInfo : loadImageAndCreateTextureInfo(type_trash[res.type].imgs[res.img]),
-        x : res.pos.x,
-        y : res.pos.y,
-        h : res.pos.h,
-        w : res.pos.w,
+        textureInfo: loadImageAndCreateTextureInfo(type_trash[res.type].imgs[res.img]),
+        x: res.pos.x,
+        y: res.pos.y,
+        h: res.pos.h,
+        w: res.pos.w,
         id: res.type
       })
     }
 
-    
+
     ItemIsInTrash(drawInfos);
 
-    currScrollPos+=deltaTime*speed*10;
-    
+    currScrollPos += deltaTime * speed * 10;
+
 
 
     let didMiss = false;
-    drawInfos.forEach(function(drawInfo) {
-      drawInfo.y +=  100*speed * deltaTime;
+    drawInfos.forEach(function (drawInfo) {
+      drawInfo.y += 100 * speed * deltaTime;
       if (drawInfo.y + drawInfo.h >= gl.canvas.height) {
         player.lives--;
         didMiss = true;
@@ -156,16 +156,16 @@ for(let i = 0; i<10; i++){
       }
     });
 
-    if(didMiss){
+    if (didMiss) {
       drawInfos.shift();
     }
 
-    if(player.lives){
+    if (player.lives) {
       return;
     }
   }
 
- 
+
 
   function draw() {
     webglUtils.resizeCanvasToDisplaySize(gl.canvas);
@@ -177,9 +177,9 @@ for(let i = 0; i<10; i++){
 
     drawImage(background.texture, background.width, background.height, 0, currScrollPos);
 
-    drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - currPlayerW/2, player.pos.y-currPlayerH/2, currPlayerW, currPlayerH)
+    drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - currPlayerW / 2, player.pos.y - currPlayerH / 2, currPlayerW, currPlayerH)
 
-    drawInfos.forEach(function(drawInfo) {
+    drawInfos.forEach(function (drawInfo) {
       drawImage(
         drawInfo.textureInfo.texture,
         drawInfo.textureInfo.width,
@@ -192,22 +192,22 @@ for(let i = 0; i<10; i++){
     let topY = currCanvasH - scoreH - 10;
     let str = "";
 
-    for(let i = 0; i <5; i++){
-      str = Math.abs(copy%10) + str;
-      copy = Math.floor(copy/10);
+    for (let i = 0; i < 5; i++) {
+      str = Math.abs(copy % 10) + str;
+      copy = Math.floor(copy / 10);
     }
 
-    for(let i = 0; i< 5; i++){
-      drawImage(nums[parseInt(str[i],10)].texture, scoreW ,scoreH, topX, topY)
+    for (let i = 0; i < 5; i++) {
+      drawImage(nums[parseInt(str[i], 10)].texture, scoreW, scoreH, topX, topY)
       topX += scoreW;
     }
 
     topX = currCanvasW - currPlayerW;
-    topY = currCanvasH - currPlayerW -10;
+    topY = currCanvasH - currPlayerW - 10;
 
-    for(let i = 0; i < player.lives; i++){
+    for (let i = 0; i < player.lives; i++) {
       drawImage(heart.texture, currPlayerW, currPlayerH, topX, topY);
-      topX-=currTrashW;
+      topX -= currTrashW;
     }
   }
 
@@ -219,24 +219,24 @@ for(let i = 0; i<10; i++){
     var deltaTime = Math.min(0.1, now - then);
     then = now;
 
-    if(!pause){
+    if (!pause) {
       update(deltaTime);
       draw();
     }
-    
-    if(!player.lives){
-      cancelAnimationFrame( id );
+
+    if (!player.lives) {
+      cancelAnimationFrame(id);
     }
 
-    
+
   }
   requestAnimationFrame(render);
 
   // Unlike images, textures do not have a width and height associated
   // with them so we'll pass in the width and height of the texture
   function drawImage(
-      tex, texWidth, texHeight,
-      dstX, dstY, dstWidth, dstHeight) {
+    tex, texWidth, texHeight,
+    dstX, dstY, dstWidth, dstHeight) {
     if (dstWidth === undefined) {
       dstWidth = texWidth;
     }

@@ -1,6 +1,6 @@
 let pos = [0.0, 0.0];
 let rgb = [1.0, .5, 0.25];
-let speed = 0.5, time_spawn = 10;
+let speed = 1, time_spawn = 10;
 let trash_count = 0;
 let latest_added = 0;
 let spawnSpeed = 2000;
@@ -47,15 +47,15 @@ function ItemIsInTrash(arrTrash) {
     var centerItemX = arrTrash[i].x + currTrashW / 2;
     var centerItemY = arrTrash[i].y + currTrashH / 2;
     var isItemInTrash = Math.sqrt(Math.pow(centerPlayerX - centerItemX, 2) + Math.pow(centerPlayerY - centerItemY, 2))
+    //console.log(isItemInTrash);
 
-    if (Math.abs(isItemInTrash) < 100) {
+    if (Math.abs(isItemInTrash) < 10) {
       if (arrTrash[i].id == player.currImage) {
         
         mult + 0.01;
         player.score += Math.ceil(mult * 10);
       }
       else {
-        
         player.lives--;
       }
       arrTrash.splice(i, 1);
