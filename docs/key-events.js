@@ -49,7 +49,8 @@ function keyEvents() {
     if(player.currImage<0){
       player.currImage = 2;
     }
-    return false;     // cancel default menu
+    //return false;     // cancel default menu
+    return true;
   }
 
   canvas = document.getElementById("canvas");
