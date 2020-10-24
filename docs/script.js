@@ -13,12 +13,15 @@ function main() {
   currCanvasH = canvas.getBoundingClientRect().height;
 
   if (currCanvasW <= 769) {
+    scoreH = 0.09 * currCanvasW;
     currPlayerH = currPlayerW = 0.09 * currCanvasW;
     currTrashH = currTrashW = 0.07 * currCanvasW;
   } else if (currCanvasW <= 1200) {
+    scoreH = 0.07 * currCanvasW;
     currPlayerH = currPlayerW = 0.07 * currCanvasW;
     currTrashH = currTrashW = 0.055 * currCanvasW;
   } else {
+    scoreH = 0.09 * currCanvasW;
     currPlayerH = currPlayerW = 0.09 * currCanvasW;
     currTrashH = currTrashW = 0.08 * currCanvasW;
   }
@@ -141,6 +144,7 @@ for(let i = 0; i<10; i++){
     currScrollPos+=deltaTime*speed;
     
 
+
     let didMiss = false;
     drawInfos.forEach(function(drawInfo) {
       drawInfo.y +=  speed * deltaTime;
@@ -153,6 +157,10 @@ for(let i = 0; i<10; i++){
 
     if(didMiss){
       drawInfos.shift();
+    }
+
+    if(player.lives){
+      return;
     }
   }
 
@@ -180,7 +188,7 @@ for(let i = 0; i<10; i++){
 
     let copy = player.score;
     let topX = 0;
-    let topY = currCanvasH - scoreH;
+    let topY = currCanvasH - scoreH- 100;
     let str = "";
 
     for(let i = 0; i <5; i++){
@@ -191,7 +199,7 @@ for(let i = 0; i<10; i++){
     }
 
     for(let i = 0; i< 5; i++){
-      drawImage(nums[parseInt(str[i],10)].texture, nums[parseInt(str[i],10)].width,nums[parseInt(str[i],10)].height, topX, topY)
+      drawImage(nums[parseInt(str[i],10)].texture, nums[parseInt(str[i],10)].width,scoreH, topX, topY)
       topX += 50;
     }
   }
