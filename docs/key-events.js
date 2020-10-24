@@ -66,7 +66,7 @@ function keyEvents(){
       player.pos.y = p.y;
     }, false);
     
-    window.addEventListener("onresize", function(evt){
+    window.addEventListener("resize", function(evt){
       currCanvasW = canvas.getBoundingClientRect().width;
       currCanvasH = canvas.getBoundingClientRect().height;
 
