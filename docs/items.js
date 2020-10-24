@@ -51,13 +51,15 @@ function ItemIsInTrash(arrTrash) {
 
     if (Math.abs(isItemInTrash) < 100) {
       if (arrTrash[i].id == player.currImage) {
-        arrTrash.splice(i, 1);
+        
         mult + 0.01;
         player.score += mult * 10;
       }
       else {
+        
         player.score = player.score - 50;
       }
+      arrTrash.splice(i, 1);
     }
     else (Math.abs(isItemInTrash >= Number.EPSILON))
     {

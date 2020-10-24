@@ -9,6 +9,20 @@ function main() {
   if (!gl) {
     return;
   }
+  currCanvasW = canvas.getBoundingClientRect().width;
+  currCanvasH = canvas.getBoundingClientRect().height;
+
+  if (currCanvasW <= 769) {
+    currPlayerH = currPlayerW = 0.09 * currCanvasW;
+    currTrashH = currTrashW = 0.07 * currCanvasW;
+  } else if (currCanvasW <= 1200) {
+    currPlayerH = currPlayerW = 0.07 * currCanvasW;
+    currTrashH = currTrashW = 0.055 * currCanvasW;
+  } else {
+    currPlayerH = currPlayerW = 0.09 * currCanvasW;
+    currTrashH = currTrashW = 0.08 * currCanvasW;
+  }
+
 
   // setup GLSL program
   var program = webglUtils.createProgramFromScripts(gl, ["drawImage-vertex-shader", "drawImage-fragment-shader"]);
@@ -99,7 +113,7 @@ function main() {
 
   let background = loadImageAndCreateTextureInfo('assets/background-colours.jpg');
 
-  currScrollPos = -6000;
+  currScrollPos = -6000 + currCanvasH;
 
   function update(deltaTime) {
 
@@ -222,4 +236,5 @@ function main() {
   }
 
 }
-main();
+
+window.onload = main();

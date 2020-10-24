@@ -100,24 +100,6 @@ function keyEvents() {
 
   })
 
-  window.onload = function (event) {
-    currCanvasW = canvas.getBoundingClientRect().width;
-    currCanvasH = canvas.getBoundingClientRect().height;
-
-    if (currCanvasW <= 769) {
-      currPlayerH = currPlayerW = 0.09 * currCanvasW;
-      currTrashH = currTrashW = 0.07 * currCanvasW;
-    } else if (currCanvasW <= 1200) {
-      currPlayerH = currPlayerW = 0.07 * currCanvasW;
-      currTrashH = currTrashW = 0.055 * currCanvasW;
-    } else {
-      currPlayerH = currPlayerW = 0.09 * currCanvasW;
-      currTrashH = currTrashW = 0.08 * currCanvasW;
-    }
-
-
-
-  }
 
   //report the mouse position on click
   canvas.addEventListener("mousemove", function (evt) {
