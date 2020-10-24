@@ -76,14 +76,14 @@ function keyEvents(){
       currCanvasH = canvas.getBoundingClientRect().height;
 
       if(currCanvasW <= 769){
-        currPlayerH = currPlayerW = 0.08*currCanvasW;
-        currTrashH = currTrashW = 0.06*currCanvasW;
-      }else if(currCanvasW <= 1200){
-        currPlayerH = currPlayerW = 0.05*currCanvasW;
-        currTrashH = currTrashW = 0.035*currCanvasW;
-      }else{
-        currPlayerH = currPlayerW = 0.08*currCanvasW;
+        currPlayerH = currPlayerW = 0.09*currCanvasW;
         currTrashH = currTrashW = 0.07*currCanvasW;
+      }else if(currCanvasW <= 1200){
+        currPlayerH = currPlayerW = 0.07*currCanvasW;
+        currTrashH = currTrashW = 0.055*currCanvasW;
+      }else{
+        currPlayerH = currPlayerW = 0.09*currCanvasW;
+        currTrashH = currTrashW = 0.08*currCanvasW;
       }
 
       
