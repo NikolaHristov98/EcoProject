@@ -2,19 +2,21 @@ body {
   margin: 0;
 }
 
-@media only screen and (max-width: 768px) {
-  canvas {
-    margin: auto;
-    width: 100vw;
-    height: 100vh;
-    display: block;
-  }
-}
+
 
 @media only screen and (min-width: 769px) {
   canvas {
     margin: auto;
     width: 50vw;
+    height: 100vh;
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  canvas {
+    margin: auto;
+    width: 100vw;
     height: 100vh;
     display: block;
   }
