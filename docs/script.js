@@ -135,14 +135,14 @@ function main() {
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - 25, player.pos.y-25, 50, 50)
+    drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - currPlayerW/2, player.pos.y-currPlayerH/2, currPlayerW, currPlayerH)
 
     drawInfos.forEach(function(drawInfo) {
       drawImage(
         drawInfo.textureInfo.texture,
         drawInfo.textureInfo.width,
         drawInfo.textureInfo.height,
-        drawInfo.x, drawInfo.y, drawInfo.w, drawInfo.h);
+        drawInfo.x, drawInfo.y, currTrashW, currTrashH);
     });
   }
 

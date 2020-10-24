@@ -74,6 +74,10 @@ function keyEvents(){
     window.onload = function(event){
       currCanvasW = canvas.getBoundingClientRect().width;
       currCanvasH = canvas.getBoundingClientRect().height;
+
+      currPlayerH = currPlayerW = 0.09*currCanvasW;
+      currTrashH = currTrashW = 0.075*currCanvasW;
+      
     }
     
       //report the mouse position on click
