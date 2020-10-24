@@ -23,7 +23,6 @@ function main() {
     currTrashH = currTrashW = 0.08 * currCanvasW;
   }
 
-
   // setup GLSL program
   var program = webglUtils.createProgramFromScripts(gl, ["drawImage-vertex-shader", "drawImage-fragment-shader"]);
 
@@ -103,6 +102,12 @@ function main() {
 
 ///'assets/blue_container.svg','assets/green_container.svg','assets/yellow_container.svg'
 
+let nums = [];
+
+for(let i = 0; i<10; i++){
+  nums.push(loadImageAndCreateTextureInfo("assets/nums/" + i + ".svg"));
+}
+
   player.image.push(loadImageAndCreateTextureInfo('assets/blue_container.svg'));
   player.image.push(loadImageAndCreateTextureInfo('assets/green_container.svg'));
   player.image.push(loadImageAndCreateTextureInfo('assets/yellow_container.svg'));
@@ -161,7 +166,7 @@ function main() {
 
     gl.clear(gl.COLOR_BUFFER_BIT);
 
-    drawImage(background.texture, background.width, background.height, 0, currScrollPos);
+   // drawImage(background.texture, background.width, background.height, 0, currScrollPos);
 
     drawImage(player.image[player.currImage].texture, player.image.width, player.image.height, player.pos.x - currPlayerW/2, player.pos.y-currPlayerH/2, currPlayerW, currPlayerH)
 
@@ -172,6 +177,15 @@ function main() {
         drawInfo.textureInfo.height,
         drawInfo.x, drawInfo.y, currTrashW, currTrashH);
     });
+
+    let copy = player.score;
+    let topX = 0;
+    let topY = currCanvasH - scoreH;
+
+    for(let i = 0; i <10; i++){
+      drawImage(nums[Math.abs(copy%10)].texture, nums[copy%10].width,nums[copy%10].height, topX, topY);
+      topX += 50;
+    }
   }
 
   var then = 0;

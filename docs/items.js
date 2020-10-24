@@ -8,7 +8,7 @@ let spawnSpeed = 2000;
 let mult = 1;
 
 let currCanvasW, currCanvasH;
-let currPlayerW, currPlayerH, currTrashW, currTrashH;
+let currPlayerW, currPlayerH, currTrashW, currTrashH, scoreH = 200;
 
 let currScrollPos = 0;
 
@@ -26,9 +26,6 @@ let player = {
   image: [],
   currImage: -1
 };
-
-
-
 
 
 function generateItem() {
