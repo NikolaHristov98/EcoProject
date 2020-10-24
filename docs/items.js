@@ -10,6 +10,8 @@ let mult = 1;
 let currCanvasW, currCanvasH;
 let currPlayerW, currPlayerH, currTrashW, currTrashH;
 
+let currScrollPos = 0;
+
 
 let type_trash = [
   { type: "plastic", id : 0, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
