@@ -89,17 +89,17 @@ function keyEvents() {
 
     if (currCanvasW <= 769) {
        
-      scoreW = scoreH = 0.09 * currCanvasW;
-      currPlayerH = currPlayerW = 0.09 * currCanvasW;
-      currTrashH = currTrashW = 0.07 * currCanvasW;
+      scoreW = scoreH = 0.1 * currCanvasW;
+      currPlayerH = currPlayerW = 0.1 * currCanvasW;
+      currTrashH = currTrashW = 0.09 * currCanvasW;
     } else if (currCanvasW <= 1200) {
-      scoreW = scoreH = 0.07 * currCanvasW;
-      currPlayerH = currPlayerW = 0.07 * currCanvasW;
-      currTrashH = currTrashW = 0.055 * currCanvasW;
-    } else {
       scoreW = scoreH = 0.09 * currCanvasW;
-      currPlayerH = currPlayerW = 0.09 * currCanvasW;
-      currTrashH = currTrashW = 0.08 * currCanvasW;
+      currPlayerH = currPlayerW = 0.08 * currCanvasW;
+      currTrashH = currTrashW = 0.065 * currCanvasW;
+    } else {
+      scoreW = scoreH = 0.1 * currCanvasW;
+      currPlayerH = currPlayerW = 0.1 * currCanvasW;
+      currTrashH = currTrashW = 0.09 * currCanvasW;
     }
 
   })
