@@ -14,9 +14,9 @@ let currScrollPos = 0;
 
 
 let type_trash = [
-  { type: "plastic", id: 0, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
-  { type: "paper", id: 1, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] },
-  { type: "metal", id: 2, imgs: ["assets/glasses.svg", "assets/glasses.svg", "assets/glasses.svg"] }
+  { type: "paper", id: 0, imgs: ["assets/paper/box.svg", "assets/paper/plane.svg", "assets/paper/box.svg"] },
+  { type: "glass", id: 1, imgs: ["assets/glass/bottle1.svg", "assets/glass/glass1.svg", "assets/glass/dish1.svg"] },
+  { type: "metal", id: 2, imgs:  ["assets/plastic/pbottle1.svg", "assets/plastic/pbottle1.svg", "assets/plastic/pbottle1.svg"]}
 ]
 
 let player = {
