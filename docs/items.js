@@ -40,8 +40,8 @@ function generateItem() {
 }
 
 function ItemIsInTrash(arrTrash) {
-  var centerPlayerX = player.pos.x + currPlayerW / 2;
-  var centerPlayerY = player.pos.y + currPlayerH / 2;
+  var centerPlayerX = player.pos.x ;
+  var centerPlayerY = player.pos.y;
 
   for (var i = 0; i < arrTrash.length; i++) {
     var centerItemX = arrTrash[i].x + currTrashW / 2;
@@ -49,7 +49,7 @@ function ItemIsInTrash(arrTrash) {
     var isItemInTrash = Math.sqrt(Math.pow(centerPlayerX - centerItemX, 2) + Math.pow(centerPlayerY - centerItemY, 2))
     //console.log(isItemInTrash);
 
-    if (Math.abs(isItemInTrash) < 10) {
+    if (Math.abs(isItemInTrash) < currTrashW/3) {
       if (arrTrash[i].id == player.currImage) {
         
         mult + 0.01;
